@@ -1,0 +1,13 @@
+{
+  "name": "ryanluton",
+  "private": true,
+  "dependencies": {
+    "modernizr": "~2.6.2",
+    "jquery": "~1.11.0",
+    "bourbon": "~4.0.2",
+    "neat": "~1.7.0",
+    "bitters": "~0.10.1",
+    "font-awesome": "~4.2.0"
+  },
+  "devDependencies": {}
+}

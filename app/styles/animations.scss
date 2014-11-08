@@ -1,0 +1,77 @@
+
+// Mixins
+@mixin animation($animationname, $time, $timing, $delay, $count, $direction, $fill-mode, $play-state) {
+    animation:$animationname $time $timing $delay $count $direction $fill-mode $play-state;
+    -webkit-animation:$animationname $time $timing $delay $count $direction $fill-mode $play-state;
+}
+@mixin animation-name($animationname) {
+    animation-name:$animationname;
+    -webkit-animation-name:$animationname;
+}
+@mixin animation-duration($time) {
+    animation-duration:$time;
+    -webkit-animation-duration:$time;
+}
+@mixin animation-timing($timing) {
+    animation-timing-function:$timing;
+    -webkit-nimation-timing-function:$timing;
+}
+@mixin animation-delay($delay) {
+    animation-delay:$delay;
+    -webkit-animation-delay:$delay;
+}
+@mixin animation-count($count) {
+    animation-iteration-count:$count;
+    -webkit-animation-iteration-count:$count;
+}
+@mixin animation-direction($direction) {
+    animation-direction:$direction;
+    -webkit-animation-direction:$direction;
+}
+@mixin animation-fill($fill-mode) {
+    animation-fill-mode:$fill-mode;
+    -webkit-animation-fill-mode:$fill-mode;
+}
+@mixin animation-play-state($play-state) {
+    animation-play-state:$play-state;
+    -webkit-animation-play-state:$play-state;
+}
+@mixin keyframes($animationname) {
+    @keyframes $animationname {
+        @content;
+    }
+    @-webkit-keyframes $animationname {
+        @content;
+    }
+}
+
+// Variables
+$animationname = // name;
+$time = // Xs;
+$timing = // linear|ease|ease-in|ease-out|cubic-bezier(n,n,n,n)|initial|inherit;
+$delay = // Xs;
+$count = // X|infinite|initial|inherit;
+$direction = // normal|reverse|alternate|alternate-reverse|initial|inherit;
+$fill-mode = // none|forwards|backwards|both|initial|inherit;
+$play-state = // paused|running|initial|inherit;
+
+// Includes
+@include keyframes($animationname) {
+    // from {}
+    // to {}
+
+    // 0%   {}
+    // 25%  {}
+    // 50%  {}
+    // 75%  {}
+    // 100% {}  
+}
+@include animation($animationname, $time, $timing, $delay, $count, $direction, $fill-mode, $play-state);
+@include animation-name($animationname);
+@include animation-duration($time);
+@include animation-timing($timing);
+@include animation-delay($delay);
+@include animation-count($count);
+@include animation-direction($direction);
+@include animation-fill($fill-mode);
+@include animation-play-state($play-state);
