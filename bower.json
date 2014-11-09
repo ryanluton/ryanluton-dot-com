@@ -2,8 +2,8 @@
   "name": "ryanluton",
   "private": true,
   "dependencies": {
-    "modernizr": "~2.6.2",
-    "jquery": "~1.11.0",
+    "jquery": "~2.1.1",
+    "modernizr": "~2.8.1",
     "bourbon": "~4.0.2",
     "neat": "~1.7.0",
     "bitters": "~0.10.1",
