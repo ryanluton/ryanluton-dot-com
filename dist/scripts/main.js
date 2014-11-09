@@ -1,0 +1,1 @@
+"use strict";console.log("'Allo 'Allo!"),$(document).ready(function(){$(".modal-launch").on("click",function(l){l.preventDefault();var o=$(".modal-launch").index(this);$("#modal-"+o).trigger("click")})});
