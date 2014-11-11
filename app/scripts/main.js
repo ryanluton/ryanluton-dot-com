@@ -8,12 +8,12 @@ console.log('\'Allo \'Allo!');
 $(document).ready(function() {
   
   //css only modal using jquery to apply "click" of hidden launch points
-  $('.modal-launch').on('click', function(e) {
+  $('body').on('click', '.modal-launch', function(e) {
     e.preventDefault();
     var index = $('.modal-launch').index(this);
     //alert('modal-'+index);
     $('#modal-'+index).trigger('click');
-    ga('send', 'event', 'button', 'click', '#modal-'+index.toString(); 
+    ga('send', 'event', 'button', 'click', '#modal-'+index);
   });
   
   //jquery sticky implementation for cta "header"
