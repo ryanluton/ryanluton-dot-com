@@ -12,7 +12,8 @@ $(document).ready(function() {
     e.preventDefault();
     var index = $('.modal-launch').index(this);
     //alert('modal-'+index);
-    $('#modal-'+index).trigger('click'); 
+    $('#modal-'+index).trigger('click');
+    ga('send', 'event', 'button', 'click', '#modal-'+index.toString(); 
   });
   
   //jquery sticky implementation for cta "header"
@@ -20,8 +21,8 @@ $(document).ready(function() {
   
   //ga tag to track resume downloads
   $('#cv-download').on('click', function() {
-  ga('send', 'event', 'button', 'click', 'cv-download');
-});
+    ga('send', 'event', 'button', 'click', 'cv-download');
+  });
 
 });
 

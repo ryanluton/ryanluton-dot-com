@@ -11,6 +11,7 @@
     }
     -webkit-animation: $animations;
     -moz-animation:    $animations;
+    -ms-animation:     $animations;
     -o-animation:      $animations;
     animation:         $animations;
 }
