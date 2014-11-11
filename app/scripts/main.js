@@ -1,5 +1,7 @@
 'use strict';
 
+/* global ga */
+
 console.log('\'Allo \'Allo!');
 
 
