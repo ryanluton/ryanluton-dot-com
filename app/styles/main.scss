@@ -5,6 +5,7 @@
 @import '../bower_components/font-awesome/scss/font-awesome.scss';
 // endbower
 
+@import 'animations';
 
 //VARIABLES
 
@@ -238,11 +239,11 @@ section.blue-bg {
   }
 
   .browser-content {
-    background: url(../images/browser-screen-breezeworks.png);
+    background: url(../images/breezeworks-ui-full.png);
     background-color: $browser-content-background-2; 
-    background-position: top;
     background-repeat: no-repeat;
     background-size: cover;
+    @include animation('animatedBackground 15s 3s infinite');
   }
 }
 
@@ -383,16 +384,35 @@ section.light-blue-bg {
   position: relative;
   width: 100%;
   z-index: 999;
-  
+  @include transition(all 0.6s);
+  h2 {
+    display: none;
+    padding: 0.8em 0;
+    position: absolute;
+    left: -215px;
+    font-weight: 800;
+    color: white;
+    @include transition(all 0.6s);
+    @include media($large-screen) {
+      display: inline-block;
+    }
+  }
   h5 {
-    padding: 3.2em 0;
+    padding: 2.6em 0;
+    position: relative;
+    @include transition(all 0.6s);
     a {
+      position: absolute;
+      right: 50%;
+      width: 14em;
+      margin-right: -7em;
       color: white;
       border-radius: 3px;
       font-weight: bold;
       background-color: $myBlue;
       padding: .5em 1em;
       text-decoration: none;
+      @include transition(all 0.6s);
       &:hover {
         background: darken($myBlue, 5%);
       }
@@ -403,7 +423,33 @@ section.light-blue-bg {
   }
 }
 
-
+.is-sticky > .cover {
+  height: 5.2em;
+  border-bottom: 1px solid $myBlue;
+  @include transition(all 0.6s);
+  h2 {
+    padding: 0.8em;
+    left: 15px;
+    position: absolute;
+    @include media($large-screen) {
+      display: inline-block;
+    }
+    @include transition(all 0.6s 0.3s);
+  }
+  h5 {
+    padding: 1.3em;
+    @include transition(all 0.6s);
+    a{
+      right: 50%;
+      margin-right: -7em;
+      @include transition(all 0.6s);
+      @include media($large-screen) {
+        right: 15px;
+        margin-right: 0;
+      }
+    }
+  }
+}
 
 
 //////////////// GRID
