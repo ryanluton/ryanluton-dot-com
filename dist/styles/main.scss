@@ -385,7 +385,7 @@ section.light-blue-bg {
   width: 100%;
   z-index: 999;
   @include transition(all 0.6s);
-  @include transform(scale3d(0, 0, 0));
+  @include transform(scale3d(1, 1, 1));
   h2 {
     display: none;
     padding: 0.8em 0;
@@ -394,7 +394,7 @@ section.light-blue-bg {
     font-weight: 800;
     color: white;
     @include transition(all 0.6s);
-    @include transform(scale3d(0, 0, 0));
+    @include transform(scale3d(1, 1, 1));
     @include media($large-screen) {
       display: inline-block;
     }
@@ -415,7 +415,7 @@ section.light-blue-bg {
       padding: .5em 1em;
       text-decoration: none;
       @include transition(all 0.6s);
-      @include transform(scale3d(0, 0, 0));
+      @include transform(scale3d(1, 1, 1));
       &:hover {
         background: darken($myBlue, 5%);
       }
@@ -438,17 +438,17 @@ section.light-blue-bg {
       display: inline-block;
     }
     @include transition(all 0.6s 0.3s);
-    @include transform(scale3d(0, 0, 0));
+    @include transform(scale3d(1, 1, 1));
   }
   h5 {
     padding: 1.3em;
     @include transition(all 0.6s);
-    @include transform(scale3d(0, 0, 0));
+    @include transform(scale3d(1, 1, 1));
     a{
       right: 50%;
       margin-right: -7em;
       @include transition(all 0.6s);
-      @include transform(scale3d(0, 0, 0));
+      @include transform(scale3d(1, 1, 1));
       @include media($large-screen) {
         right: 15px;
         margin-right: 0;
