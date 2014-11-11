@@ -11,5 +11,8 @@ $(document).ready(function() {
     //alert('modal-'+index);
     $('#modal-'+index).trigger('click'); 
   });
+  
+  $("#sticky-info").sticky({topSpacing:0});
 
 });
+

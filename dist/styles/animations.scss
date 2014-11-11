@@ -1,77 +1,42 @@
+@mixin animation($animate...) {
+    $max: length($animate);
+    $animations: '';
 
-// Mixins
-@mixin animation($animationname, $time, $timing, $delay, $count, $direction, $fill-mode, $play-state) {
-    animation:$animationname $time $timing $delay $count $direction $fill-mode $play-state;
-    -webkit-animation:$animationname $time $timing $delay $count $direction $fill-mode $play-state;
+    @for $i from 1 through $max {
+        $animations: #{$animations + nth($animate, $i)};
+
+        @if $i < $max {
+            $animations: #{$animations + ", "};
+        }
+    }
+    -webkit-animation: $animations;
+    -moz-animation:    $animations;
+    -o-animation:      $animations;
+    animation:         $animations;
 }
-@mixin animation-name($animationname) {
-    animation-name:$animationname;
-    -webkit-animation-name:$animationname;
-}
-@mixin animation-duration($time) {
-    animation-duration:$time;
-    -webkit-animation-duration:$time;
-}
-@mixin animation-timing($timing) {
-    animation-timing-function:$timing;
-    -webkit-nimation-timing-function:$timing;
-}
-@mixin animation-delay($delay) {
-    animation-delay:$delay;
-    -webkit-animation-delay:$delay;
-}
-@mixin animation-count($count) {
-    animation-iteration-count:$count;
-    -webkit-animation-iteration-count:$count;
-}
-@mixin animation-direction($direction) {
-    animation-direction:$direction;
-    -webkit-animation-direction:$direction;
-}
-@mixin animation-fill($fill-mode) {
-    animation-fill-mode:$fill-mode;
-    -webkit-animation-fill-mode:$fill-mode;
-}
-@mixin animation-play-state($play-state) {
-    animation-play-state:$play-state;
-    -webkit-animation-play-state:$play-state;
-}
-@mixin keyframes($animationname) {
-    @keyframes $animationname {
+
+@mixin keyframes($animationName) {
+    @-webkit-keyframes #{$animationName} {
         @content;
     }
-    @-webkit-keyframes $animationname {
+    @-moz-keyframes #{$animationName} {
+        @content;
+    }
+    @-o-keyframes #{$animationName} {
+        @content;
+    }
+    @keyframes #{$animationName} {
         @content;
     }
 }
 
-// Variables
-$animationname = // name;
-$time = // Xs;
-$timing = // linear|ease|ease-in|ease-out|cubic-bezier(n,n,n,n)|initial|inherit;
-$delay = // Xs;
-$count = // X|infinite|initial|inherit;
-$direction = // normal|reverse|alternate|alternate-reverse|initial|inherit;
-$fill-mode = // none|forwards|backwards|both|initial|inherit;
-$play-state = // paused|running|initial|inherit;
 
-// Includes
-@include keyframes($animationname) {
-    // from {}
-    // to {}
 
-    // 0%   {}
-    // 25%  {}
-    // 50%  {}
-    // 75%  {}
-    // 100% {}  
+
+@keyframes animatedBackground {
+	0% { background-position: 0 0; }
+  20% { background-position: 0 0; }
+  80% { background-position: 0 101%; }
+	90% { background-position: 0 101%; }
+	100% { background-position: 0 0; }
 }
-@include animation($animationname, $time, $timing, $delay, $count, $direction, $fill-mode, $play-state);
-@include animation-name($animationname);
-@include animation-duration($time);
-@include animation-timing($timing);
-@include animation-delay($delay);
-@include animation-count($count);
-@include animation-direction($direction);
-@include animation-fill($fill-mode);
-@include animation-play-state($play-state);
