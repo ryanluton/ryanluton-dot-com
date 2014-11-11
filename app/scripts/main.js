@@ -12,7 +12,7 @@ $(document).ready(function() {
     $('#modal-'+index).trigger('click'); 
   });
   
-  $("#sticky-info").sticky({topSpacing:0});
+  $('#sticky-info').sticky({topSpacing:0});
 
 });
 
