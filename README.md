@@ -5,8 +5,9 @@ Using dploy for CI from GH-Pages Branch
 
 [![Deployment status from dploy.io](https://ryanluton.dploy.io/badge/77558059879410/13791.png)](http://dploy.io)
 
-> Built with Yeoman
+> Built with [Yeoman](http://yeoman.io)
 
+[gulp-webapp](https://github.com/yeoman/generator-gulp-webapp)
 
 ##### install Node.js
 reference - http://thechangelog.com/install-node-js-with-homebrew-on-os-x/
