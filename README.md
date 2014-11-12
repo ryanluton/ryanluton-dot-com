@@ -2,6 +2,7 @@ Ryan Luton - UX Design | UI Design | Front-End Developer
 ================
 
 Using dploy for CI from GH-Pages Branch
+
 [![Deployment status from dploy.io](https://ryanluton.dploy.io/badge/77558059879410/13791.png)](http://dploy.io)
 
 > Built with Yeoman
