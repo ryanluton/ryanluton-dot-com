@@ -23,6 +23,40 @@ $(document).ready(function() {
   $('#cv-download').on('click', function() {
     ga('send', 'event', 'button', 'click', 'cv-download');
   });
+  
+  
+/* single page scrolling */
+$(function() {
+  $('a[href*=#]:not([href=#])').click(function() {
+      if (location.pathname.replace(/^\//,'') === this.pathname.replace(/^\//,'') && location.hostname === this.hostname) {
+        var target = $(this.hash);
+        target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+        if (target.length) {
+          $('html,body').animate({
+            scrollTop: target.offset().top - 100
+          }, 1000);
+          return false;
+        }
+      }
+    });
+});
+  
 
 });
 
+
+
+
+
+//modernizr features n such
+/*
+if(!Modernizr.csstransitions) { // Test if CSS transitions are supported
+  $(function() {
+    $('#js').hover(function(){
+      $(this).animate({width:'50px',height:'50px'},{queue:false,duration:500});
+    }, function(){
+      $(this).animate({width:'100px',height:'100px'},{queue:false,duration:500});
+    });
+  });
+}
+*/

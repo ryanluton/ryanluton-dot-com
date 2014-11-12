@@ -8,7 +8,8 @@
     "neat": "~1.7.0",
     "bitters": "~0.10.1",
     "font-awesome": "~4.2.0",
-    "sticky": "~1.0.1"
+    "sticky": "~1.0.1",
+    "geoffgraham.animate.scss": "*"
   },
   "devDependencies": {}
 }
