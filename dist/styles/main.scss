@@ -3,6 +3,7 @@
 @import '../bower_components/bitters/app/assets/stylesheets/base';
 @import '../bower_components/neat/app/assets/stylesheets/neat';
 @import '../bower_components/font-awesome/scss/font-awesome.scss';
+@import '../bower_components/geoffgraham.animate.scss/animate.scss';
 // endbower
 
 @import 'animations';
@@ -376,6 +377,14 @@ section.light-blue-bg {
   }
 }
 
+
+.terminal-trans-in {
+  @include fadeInRight(
+    $duration: .6s,
+    $delay: .3s
+  );
+}
+
 ///////////
 
 .cover {
@@ -384,6 +393,7 @@ section.light-blue-bg {
   height: 9.2em;
   margin-top: -1em;
   position: relative;
+  text-align: center;
   width: 100%;
   z-index: 999;
   @include transition(all 0.6s);
@@ -391,14 +401,28 @@ section.light-blue-bg {
   h2 {
     display: none;
     padding: 0.8em 0;
+    left: 15px;
     position: absolute;
-    left: -215px;
     font-weight: 800;
     color: white;
-    @include transition(all 0.6s);
-    @include transform(scale3d(1, 1, 1));
-    @include media($large-screen) {
-      display: inline-block;
+  }
+  ul {
+    display: inline-block;
+    position: absolute;
+    top: 4em;
+    margin-left: -10em;
+    opacity: 0;
+    z-index: 1;
+    @include transition(all 0.4s);
+    li {
+    display: inline-block;
+    @include fadeOutUp(
+      $duration: .2s,
+      $delay: 0s
+    );
+    a {
+      color: white;
+    }
     }
   }
   h5 {
@@ -437,14 +461,38 @@ section.light-blue-bg {
     }
   @include transition(all 0.6s);
   h2 {
-    padding: 0.8em;
+    padding: 0.8em 0;
     left: 15px;
     position: absolute;
     @include media($large-screen) {
       display: inline-block;
     }
-    @include transition(all 0.6s 0.3s);
-    @include transform(scale3d(1, 1, 1));
+    @include fadeInLeft(
+      $duration: .6s,
+      $delay: .3s
+    );
+  }
+  ul {
+    display: inline-block;
+    position: absolute;
+    top: 2em;
+    margin-left: -10em;
+    opacity: 1;
+    @include fadeIn(
+      $duration: .2s,
+      $delay: 0s
+    );
+    li {
+    display: inline-block;
+    @for $i from 1 to 5 { // testing out staggered delays
+      &:nth-child(#{$i}) {
+      @include fadeIn(
+        $duration: .6s,
+        $delay: #{.4 + $i * 0.1}s
+      );
+      }
+    }
+    }
   }
   h5 {
     padding: 1.3em;
