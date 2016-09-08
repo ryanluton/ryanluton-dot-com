@@ -5,6 +5,8 @@
 console.log('\'Allo \'Allo!');
 
 
+
+
 $(document).ready(function() {
   
   //css only modal using jquery to apply "click" of hidden launch points
@@ -42,6 +44,16 @@ $(function() {
 });
   
 
+});
+
+
+$(window).load(function(){
+  setTimeout(function() {
+    $('.preloader').addClass('loader-out'); //animate.sass class
+    setTimeout(function() {
+      $('.preloader').hide(); //hide from dom fix for visibility 
+    }, 1200);
+  }, 4000);
 });
 
 

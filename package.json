@@ -3,6 +3,9 @@
   "engines": {
     "node": ">=0.10.0"
   },
+  "scripts": {
+    "deploy": "gh-pages-deploy"
+  },
   "devDependencies": {
     "apache-server-configs": "^2.7.1",
     "connect": "^3.0.1",
@@ -31,5 +34,10 @@
     "serve-index": "^1.1.4",
     "serve-static": "^1.4.0",
     "wiredep": "^2.0.0"
+  },
+  "gh-pages-deploy": {
+    "staticpath": "dist",
+    "cname": "nope.org",
+    "noprompt": false
   }
 }
