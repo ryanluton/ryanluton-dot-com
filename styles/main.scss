@@ -1,0 +1,997 @@
+// bower:scss
+@import '../bower_components/bourbon/dist/bourbon';
+@import '../bower_components/bitters/app/assets/stylesheets/base';
+@import '../bower_components/neat/app/assets/stylesheets/neat';
+@import '../bower_components/font-awesome/scss/font-awesome.scss';
+@import '../bower_components/geoffgraham.animate.scss/animate.scss';
+// endbower
+
+@import 'animations';
+
+//VARIABLES
+
+$myBlue: #4d7c90;
+$myBlueLight: #6fb4d1;
+
+$sans-serif: 'Questrial', sans-serif;
+$serif: 'Sanchez', serif;
+
+
+$browser-top-bar-height: 1.5em;
+$browser-circle-size: .5em; 
+$browser-circle-margin: ($browser-top-bar-height - $browser-circle-size) / 2;
+$browser-top-bar-background: lighten(#DFDFDF, 5);
+$browser-border: 0px;
+$browser-background: $base-background-color;
+$browser-content-background-1: #F0F0F0;
+$browser-content-background-2: $base-background-color;
+$browser-content-background-3: #F0F0F0;
+
+
+
+//////// GENERAL
+
+Body {
+  margin: 0;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  font-family: $serif;
+  text-align: center;
+}
+
+a {
+  color: $myBlue;
+  &:hover {
+    color: $myBlueLight;
+  }
+  & > img {
+    border: 0;
+  }
+}
+
+
+/////////// ALERTS
+
+
+$flash-red: #FBE3E4;
+$flash-yellow: #FFF6BF;
+$flash-green: #E6EFC2;
+
+%flash-base {
+  display: block;
+  font-weight: bold;
+  margin-bottom: $base-spacing / 2;
+  padding: $base-spacing / 2;
+}
+
+$flashes: (alert: $flash-yellow, error: $flash-red, notice: lighten($base-accent-color, 40), success: $flash-green);
+
+@each $flash, $color in $flashes {
+  .flash-#{$flash} {
+    @extend %flash-base;
+    background: $color;
+    color: darken($color, 60);
+
+    a {
+      color: darken($color, 70);
+      border-bottom: 1px solid transparentize(darken($color, 70), .7);
+
+      &:hover {
+        color: darken($color, 90);
+      }
+    }
+  }
+}
+
+
+
+//////// INTRO 
+
+.intro-text {
+  $intro-text-width: 60%;
+  padding-bottom: 8em;
+  padding-top: 4em;
+  text-align: center;
+
+  h2 {
+    font-family: $serif;
+    font-weight: 800;
+    margin-bottom: .3em;
+    color: $myBlue;
+
+    @include media($large-screen) {
+      font-size: 3em;
+      margin-bottom: .4em;
+    }
+  }
+
+  h3 {
+    background: $base-accent-color;
+    color: white;
+    display: inline-block;
+    font-size: .7em;
+    font-weight: 800;
+    margin-bottom: 2em;
+    padding: 3px 8px;
+    text-transform: uppercase;
+
+    @include media($large-screen) {
+      margin-bottom: 3.3em;
+    }
+  }
+
+  h4 {
+    color: lighten($base-font-color, 20);
+    font-size: 1.3em;
+    font-weight: 300;
+    line-height: 1.4em;
+    margin: 0 auto 1em;
+
+    @include media($large-screen) {
+      font-size: 1.7em;
+      line-height: 1.35em;
+      margin: 0 auto 1em;
+      width: $intro-text-width;
+    }    
+  }
+
+  p {
+    margin: auto;
+    font-size: 1.125em;
+    width: 90%;
+    @include media($large-screen) {
+      width: $intro-text-width;
+    }
+
+  }
+}
+
+
+
+////////// BROWSERS
+
+section.blue-bg {
+    background: $myBlue;
+}
+
+.browsers {
+  display:inline-block;
+  padding-top: 0;
+  text-align:center;
+  width:100%;
+  margin-top: -5em;
+
+  @include media($large-screen) {
+    padding-top: 2em;
+  }
+}
+
+.browser-top-bar {
+  @include linear-gradient($browser-top-bar-background, darken($browser-top-bar-background, 2));
+  border-top-left-radius: $base-border-radius;
+  border-top-right-radius: $base-border-radius;
+  border: $browser-border;
+  box-shadow: inset 0 1px 0 transparentize(white, .6);
+  height: $browser-top-bar-height;
+  width: 100%;
+}
+
+.browser-circle {
+  border-radius: $browser-circle-size * 2;
+  box-shadow: 0 1px 0px transparentize(white, .5), inset 0 1px 1px transparentize(black, 0.8);
+  display: inline-block;
+  @include size($browser-circle-size);
+  margin: $browser-circle-margin 0;
+}
+
+.browser-circle:nth-child(1) {
+  background: #FF6F55;
+  margin-left: $browser-circle-margin;
+}
+
+.browser-circle:nth-child(2) {
+  background: #F5B01D;
+  margin-left: $browser-circle-margin / 3;
+}
+
+.browser-circle:nth-child(3) {
+  background: #51B151;
+  margin-left: $browser-circle-margin / 3;
+}
+
+///////////
+
+.browser {
+  border-bottom: none;
+  border-top-left-radius: $base-border-radius;
+  border-top-right-radius: $base-border-radius;
+  box-shadow: 0 3px 5px transparentize(black, .7);
+  display: inline-block;    
+  text-align: left;
+  width:20%;
+}
+
+.browser:nth-child(1) {
+  background-color: $browser-content-background-1;
+  display: none;
+
+  @include media($large-screen) {
+    display: inline-block;    
+  
+    .browser-content {
+      background: url(../images/browser-screen-sparks.png);
+      background-color: $browser-content-background-1;
+      background-position: top left;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+  
+  }
+}
+
+.browser:nth-child(2) {
+  @include transform(scale(1));
+  background-color: $browser-content-background-2; 
+  width: 90%;
+  
+  @include media($large-screen) {
+    @include transform(scale(1.2));
+    width: 40%;
+  }
+
+  .browser-content {
+    background: url(../images/breezeworks-ui-full.png);
+    background-color: $browser-content-background-2; 
+    background-repeat: no-repeat;
+    background-size: cover;
+    @include animation('animatedBackground 15s 3s infinite');
+  }
+}
+
+.browser:nth-child(3) {
+  background-color: $browser-content-background-3; 
+  display: none;
+   
+  @include media($large-screen) {
+    display: inline-block;    
+
+    .browser-content {
+      background: url(../images/browser-screen-prism.png);
+      background-color: $browser-content-background-3; 
+      background-position: top right;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+  }
+}
+
+.browser-content {
+  border-left: $browser-border;
+  border-right: $browser-border;
+  height: 17em;
+  overflow: hidden;
+
+  @include media($large-screen) {
+    height: 18em;
+  }
+}
+
+
+///////////////// TERMINAL
+
+section.light-blue-bg {
+    background: $myBlueLight;
+    margin-bottom: 6em;
+}
+
+.terminal-name {
+  display: inline-block;
+  margin: 0 10px;
+  position: absolute;
+}
+
+.browsers.terminal {
+  display:inline-block;
+  padding-top: 0;
+  text-align:center;
+  width:100%;
+  margin-top: -5em;
+  
+  @include media($large-screen) {
+    text-align:right;
+  }
+  
+  .tools-i-use{
+    display: inline-block;
+    float: left;
+    padding: 8em 2em 0 2em;
+    width: 100%;
+    text-align: center;
+    
+  @include media($large-screen) {
+    text-align: left;
+    width: 40%;
+    padding: 8em 0 0 0;
+  }
+    
+  h4 {
+    color: lighten($base-font-color, 20);
+    font-size: 1.7em;
+    font-weight: 300;
+    line-height: 1.4em;
+    text-align: center;
+    margin-bottom: .5em;
+  @include media($large-screen) {
+    text-align: left;
+  }
+  }
+  p {
+    color: white;
+  }
+  }
+
+  @include media($large-screen) {
+    padding: 0 6em;
+  }
+}
+
+.browser.terminal {
+  background: #555; 
+  display: inline-block;
+  width: 90%;
+  @include transform(translateY(2em));
+  
+  @include media($large-screen) {
+    display: inline-block;    
+    width: 50%;
+  }
+}
+
+.terminal-content {
+  border-left: $browser-border;
+  border-right: $browser-border;
+  height: 17em;
+  overflow: hidden;
+  padding: .4em;
+  li {
+    $coda-item-colors: #f99157,#99cccc,#f2777a,#99cc99,#d7acd3,#f99157,#99cccc,#f2777a;
+    &::before {
+      content: 'iUse:~';
+      margin-right: 4px;
+      color: #ccc;
+      font-family: monospace;
+    }
+  
+    @for $i from 1 to 8 { // assign colors from $grid-item-colors list
+      &:nth-child(#{$i}) {
+        $background-from-list: nth($coda-item-colors, $i);
+        color: $background-from-list;
+      }
+    }
+  }
+  
+  @include media($large-screen) {
+    height: 18em;
+  }
+}
+
+
+.terminal-trans-in {
+  @include fadeInRight(
+    $duration: .6s,
+    $delay: .3s
+  );
+}
+
+///////////
+
+.cover {
+  background: $myBlueLight;
+  border-top: 1px solid #E6E6E6;
+  height: 9.2em;
+  margin-top: -1em;
+  position: relative;
+  text-align: center;
+  width: 100%;
+  z-index: 999;
+  @include transition(all 0.6s);
+  @include transform(scale3d(1, 1, 1));
+  h2 {
+    display: none;
+    padding: 0.8em 0;
+    left: 15px;
+    position: absolute;
+    font-weight: 800;
+    color: white;
+  }
+  ul {
+    display: inline-block;
+    position: absolute;
+    top: 4em;
+    margin-left: -10em;
+    opacity: 0;
+    z-index: 1;
+    @include transition(all 0.4s);
+    li {
+    display: inline-block;
+    @include fadeOutUp(
+      $duration: .2s,
+      $delay: 0s
+    );
+    a {
+      color: white;
+    }
+    }
+  }
+  h5 {
+    padding: 2.6em 0;
+    position: relative;
+    @include transition(all 0.6s);
+    a {
+      position: absolute;
+      right: 50%;
+      width: 14em;
+      margin-right: -7em;
+      color: white;
+      border-radius: 3px;
+      font-weight: bold;
+      background-color: $myBlue;
+      padding: .5em 1em;
+      text-decoration: none;
+      @include transition(all 0.6s);
+      @include transform(scale3d(1, 1, 1));
+      &:hover {
+        background: darken($myBlue, 5%);
+      }
+      &:active {
+        background: darken($myBlue, 8%);
+      }
+    }
+  }
+}
+
+.is-sticky > .cover {
+  height: 5.2em;
+  border-bottom: 1px solid $myBlue;
+  position: static !important;
+  @include media($large-screen) {
+      position: fixed !important;
+    }
+  @include transition(all 0.6s);
+  h2 {
+    padding: 0.8em 0;
+    left: 15px;
+    position: absolute;
+    @include media($large-screen) {
+      display: inline-block;
+    }
+    @include fadeInLeft(
+      $duration: .6s,
+      $delay: .3s
+    );
+  }
+  ul {
+    display: inline-block;
+    position: absolute;
+    top: 2em;
+    margin-left: -10em;
+    opacity: 1;
+    @include fadeIn(
+      $duration: .2s,
+      $delay: 0s
+    );
+    li {
+    display: inline-block;
+    @for $i from 1 to 5 { // testing out staggered delays
+      &:nth-child(#{$i}) {
+      @include fadeIn(
+        $duration: .6s,
+        $delay: #{.4 + $i * 0.1}s
+      );
+      }
+    }
+    }
+  }
+  h5 {
+    padding: 1.3em;
+    @include transition(all 0.6s);
+    @include transform(scale3d(1, 1, 1));
+    a{
+      right: 50%;
+      margin-right: -7em;
+      @include transition(all 0.6s);
+      @include transform(scale3d(1, 1, 1));
+      @include media($large-screen) {
+        right: 15px;
+        margin-right: 0;
+      }
+    }
+  }
+}
+
+
+//////////////// GRID
+
+.grid-contain {
+  margin: 4em 0;
+  h4 {
+    color: lighten($base-font-color, 20);
+    font-size: 1.7em;
+    font-weight: 300;
+    line-height: 1.4em;
+    padding: 0 0 3em;
+  }
+}
+
+@mixin grid-item-columns($columns) {
+  width: (100% / 12) * $columns;
+}
+
+.grid-items {
+  $grid-items-background: $base-background-color;
+  $grid-item-background: desaturate($base-accent-color, 30); 
+  $grid-item-colors: 
+    #404f4e, 
+    #6d8181, 
+    #6fb4d1,
+    #4d7c90,
+    #404f4e, 
+    #6d8181, 
+    #6fb4d1,
+    #4d7c90;
+
+
+  $grid-item-border-size: 9px;
+  $grid-item-columns: 4;
+  $grid-item-big-columns: 8;
+  $grid-item-color: white;
+  $grid-item-height: 14em;
+
+  @include clearfix;
+    
+  .grid-item {
+    @include transition (all 0.2s ease-in-out);
+    height: $grid-item-height;
+    background: $grid-item-background;
+    width: 100%;
+    overflow: hidden;
+    float: left;
+    padding: 2em;
+    border-top: 0;
+    border-bottom: $grid-item-border-size solid $grid-items-background;
+    border-left: $grid-item-border-size /2 solid $grid-items-background;
+    border-right: $grid-item-border-size /2 solid $grid-items-background;
+    text-align: center;
+    cursor: pointer;
+
+    @include media($large-screen) {
+      @include grid-item-columns($grid-item-columns);
+    }
+
+    @for $i from 1 to 8 { // assign colors from $grid-item-colors list
+      &:nth-child(#{$i}) {
+        $background-from-list: nth($grid-item-colors, $i);
+        background-color: $background-from-list;
+        box-shadow: inset 0px 0px 1px 2px darken($background-from-list, 10);
+        background-repeat: no-repeat;
+        background-position: top;
+        background-size: cover;
+        &:hover {
+          background-color: darken($background-from-list, 10);
+          background-repeat: no-repeat;
+          background-position: top;
+          background-size: cover;
+        }
+      }
+    }
+  }
+
+  .grid-item img {
+      display: block;
+      height: 3em;
+      margin: auto;
+      margin-bottom: 1em;
+    }
+    
+  .grid-item i {
+    font-size: 3.8em;
+    line-height: 0.9em;
+    color: white;
+    margin-bottom: 0.2em;
+  }
+
+  .grid-item h1 {
+      color: $grid-item-color;
+      font-size: 1.3em;
+      margin-bottom: .4em;
+    }
+
+  .grid-item p {
+      margin: auto;
+      color: transparentize($grid-item-color, .3);
+      @include media($medium-screen) {
+        max-width: 70%;
+      }
+    }
+
+  .grid-item-big {
+    @include media($large-screen) {
+      @include grid-item-columns($grid-item-big-columns);
+    }
+    p {
+      @include media($medium-screen) {
+        max-width: 60%;
+      }  
+    }
+  }
+
+  .grid-item-image-1 {
+    background: url(../images/breezeworks-ui-trans.png);
+  }
+  .grid-item-image-2 {
+    background: url(../images/boatramp-ux-flow-trans.png);
+  }
+  .grid-item-image-3 {
+    background: url(../images/health-dashboard-trans.png);
+  }
+  .grid-item-image-4 {
+    background: url(../images/sparks-ui-trans.png);
+  }
+  .grid-item-image-5 {
+    background: url(../images/health-mockup-trans.png);
+  }
+  .grid-item-image-6 {
+    background: url(../images/sheraton-ui-trans.png);
+  }
+  .grid-item-image-7 {
+    background: url(../images/loya-print-trans.png);
+  }
+}
+
+
+
+/////////////// MODALS
+
+.modal {
+  $modal-padding: 2em;
+  $modal-background: $base-background-color;
+  $modal-close-color: $light-gray;
+  $modal-image-height: 135px;
+  $modal-image-width: $modal-image-height;
+
+  label {
+    cursor: pointer;
+    margin-bottom: 0;
+  }
+
+  label img {
+    $img-width: 300px;
+    border-radius: $img-width/2;
+    display: block;
+    max-width: $img-width;
+  }
+
+  input[type="checkbox"] {
+    display: none;
+  }
+
+  .modal-open {
+    overflow: hidden;
+  }
+
+  .modal-window { // overlay
+    @include transition(opacity .25s ease);
+    @include position(fixed, 0px 0px 0px 0px);
+    background: rgba(0,0,0, .85);
+    opacity: 0;
+    text-align: left;
+    visibility: hidden;
+    z-index: 99999999999;
+
+    .modal-bg {
+      @include position(absolute, 0px 0px 0px 0px);
+      cursor: pointer;
+    }
+  }
+
+  .modal-close {
+    @include position(absolute, ($modal-padding /2) ($modal-padding /2) none none);
+    @include size(1.5em);
+    cursor: pointer;
+    background: $modal-background;
+
+    &:after,
+    &:before {
+      @include position(absolute, 3px 3px 0 50%);
+      @include transform(rotate(45deg));
+      @include size(.15em 1.5em);
+      background: $modal-close-color;
+      content: '';
+      display: block;
+      margin: -3px 0 0 -1px;
+    }
+
+    &:hover:after,
+    &:hover:before {
+      background: darken($modal-close-color, 10);
+    }
+
+    &:before {
+      @include transform(rotate(-45deg));
+    }
+  }
+
+  .modal-inner {
+    @include transition(opacity .25s ease);
+    border-radius: $base-border-radius;
+    background: $modal-background;
+    margin: auto;
+    max-height: 95%;
+    position: relative;
+    overflow: auto;
+    width: 95%;
+    padding: $modal-padding /2;
+    margin-top: .6em;
+    
+    .content {
+      @include outer-container;
+    }
+    
+    .modal-imgs{
+      img {
+        width: auto;
+        border: 1px solid #ccc;
+      }
+      @include span-columns(12);
+      @include media($medium-screen) {
+        @include span-columns(6);  
+        @include omega(2n);
+      }
+    }
+    
+    .modal-info {
+      @include span-columns(12);
+      margin-top: .75em;
+    }
+
+
+    @include media($medium-screen) {
+      padding: $modal-padding;
+      width: 70%;
+      max-height: 80%;
+      margin-top: 4em;
+    }
+
+    @include media($large-screen) {
+      width: 60%;
+      margin-top: 4em;
+    }
+
+    h1 {
+      color: lighten($base-font-color, 20);
+      font-size: 1.3em;
+      font-weight: 300;
+      line-height: 1.4em;
+      margin-bottom: .6em;
+      text-align: left;
+    }
+
+    p.body, p.intro {
+      font-size: $base-font-size;
+      max-width: 100% !important;
+      text-align: left;
+
+
+      a {
+        color: $myBlue;
+        font-weight: bold;
+      }
+      &.intro {
+        color: $myBlue;
+        line-height: 1.45em;
+        strong {
+          color: $base-font-color;
+          margin-right: 1em;
+        }
+      }
+
+      &.body { 
+        color: $base-font-color;
+        line-height: 1.45em;
+        strong {
+          color: $base-font-color;
+          margin-right: 1em;
+        }
+      }
+    }
+  }
+
+  .modal-state:checked + .modal-window {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .modal-state:checked + .modal-window .modal-inner {
+    top: 0;
+  }
+}
+
+
+
+////////////// COMMENTS
+
+.recommendations {
+  @include outer-container;
+  margin-bottom: 6em;
+}
+
+.title {
+    @include span-columns(12);
+  h4 {
+    color: lighten($base-font-color, 20);
+    font-size: 1.7em;
+    font-weight: 300;
+    line-height: 1.4em;
+    padding: 0 0 3em;
+  }
+}
+
+.comment {
+  $comment-gutter: 1.4em;
+  $comment-color: $base-font-color;
+  $comment-background: lighten($base-accent-color, 15);
+  $comment-detail-color: transparentize($comment-color, .5);
+  @include span-columns(10);
+  @include shift(1);
+  
+  @include media($large-screen) {
+    @include span-columns(8);
+    @include shift(2);
+  }
+
+  display: table;
+  margin-bottom: $base-spacing;
+  padding-bottom: 1em;
+  border-bottom: 1px solid transparentize($comment-color, .9);
+  &:last-child {
+    border-bottom: none;
+  }
+
+  .comment-image,
+  .comment-content {
+    display: table-cell;
+  }
+
+  .comment-content {
+    width: 100%;
+
+    h1 {
+      font-size: 1em;
+      margin-bottom: .5em;
+    }
+
+    p {
+      margin-bottom: .5em;
+    }
+
+    p.comment-detail {
+      font-style: italic;
+      font-size: .9em;
+      color: $comment-detail-color;
+    }
+  }
+}
+
+
+//////////// CONTACT
+
+.contact {
+  @include outer-container;
+  padding: 0 3em;
+}
+
+
+
+
+
+////////////// FOOTER
+
+.footer {
+  $footer-background: $myBlue;
+  $footer-color: white;
+  $footer-link-color: transparentize($footer-color, .6);
+  $footer-disclaimer-color: transparentize($footer-color, .6);
+
+  background: $footer-background;
+  padding: $base-spacing;
+  width: 100%;
+  height: 17em;
+  margin-top: 10em;
+  
+  a {
+    color: $footer-link-color;
+
+    &:hover {
+      color: transparentize($footer-color, 0);
+    }
+  }
+
+  @include media($large-screen) {
+    height: 4em;
+  }
+
+  .footer-logo {
+    margin-right: 1em;
+    margin-bottom: 1em;
+
+    @include media($large-screen) {
+      float: left;
+      margin-bottom: 0;
+    }
+  }
+
+  .footer-logo img {
+    height: 1.6em;
+  } 
+
+  ul {
+    margin-bottom: 1em;
+    @include media($large-screen) {
+      float: left;
+      margin-left: 1em;
+      margin-bottom: 0;
+    }
+  }
+
+  ul li {
+    padding-right: 1em;
+    font-weight: 800;
+
+    @include media($large-screen) {
+      display: inline;
+      text-align: left;
+    }
+  }
+
+  ul li a {
+    color: $footer-link-color;
+
+    &:hover {
+      color: transparentize($footer-color, 0);
+    }
+  }
+
+  .footer-secondary-links {
+    @include media($large-screen) {
+      float: right;
+    }
+
+    li {
+      font-weight: 400;
+    }
+
+    ul.footer-social {
+      margin-top: 1em;
+
+      @include media($large-screen) {
+        float: right;
+        margin-top: 0;
+      }
+
+      li {
+        float: left;
+        font-size: 1.5em;
+        line-height: 1em;
+        padding-right: .7em;
+
+        &:last-child {
+          padding-right: 0;
+        }
+      }
+
+    }
+  }
+}
+
